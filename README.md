@@ -9,6 +9,7 @@ Blog主题使用[NexT](https://github.com/iissnan/hexo-theme-next)
  git submodule init
  git submodule update
  ```
+
 + 远程编辑库使用方式（src：dst）
  ```
  git remote add -t dev edit https://github.com/stillwuyan/stillwuyan.github.io.git
