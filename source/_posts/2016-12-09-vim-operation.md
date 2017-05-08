@@ -6,10 +6,7 @@ tags: Vim
 本文内容是基于网络资源整理，首先介绍Vim的操作模式，然后列举一些Vim常用操作和技巧，以后会不定期更新。
 
 ## Vim操作模式
----
-
 ![Vim操作模式](vim_mode_switch.png)
-
 ### 1. 普通模式
 Vim的默认模式，使用`vim`命令打开文件后默认进入该模式。Vim的大部分操作命令都在该模式下执行
 
@@ -35,8 +32,6 @@ Vim的默认模式，使用`vim`命令打开文件后默认进入该模式。Vim
 在普通模式下输入执行命令`:`，搜索命令`/`和`？`，或者过滤命令`!`等可进入命令模式，命令执行后自动返回到普通模式；另外有一种Ex模式，在普通模式下输入`Q(shift+q)`进入。Ex模式与命令模式比较相似，在使用`:visual`命令离开Ex模式前，可以一次执行多条命令
 
 ## 常用操作
-----
-
 ### 1. 移动光标
 + 在插入模式和替换模式以外，都可以使用`h`，`j`，`k`，`l`来分别实现左，下，上，右方向移动的功能。如果Vim对超过一行的内容执性自动换行，而我们想要仍然按照显示的一行来移动，那么可以在按`h`，`j`，`k`，`l`之前键入一个g
 + 在当前行内移动光标，可以使用的motion命令：
@@ -96,7 +91,7 @@ Vim的默认模式，使用`vim`命令打开文件后默认进入该模式。Vim
 
 
 ## 参考链接
-[撸一撸VIM](http://zhongmingmao.me/2016/04/30/command_line_mode.html)
+
 [高效率编辑器 Vim](https://linuxtoy.org/archives/efficient-editing-with-vim.html)
 [无插件Vim编程技巧](http://coolshell.cn/articles/11312.html)
 [vi/vim cheat sheet](http://sheet.shiar.nl/vi)
