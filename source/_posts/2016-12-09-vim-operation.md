@@ -2,6 +2,7 @@
 title: Vim常用操作
 date: 2016-12-09 14:44:35
 tags: Vim
+categories: Technology
 ---
 本文内容是基于网络资源整理，首先介绍Vim的操作模式，然后列举一些Vim常用操作和技巧，以后会不定期更新。
 

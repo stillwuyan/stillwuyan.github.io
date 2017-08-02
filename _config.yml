@@ -8,6 +8,8 @@ subtitle:
 description:
 author: sizzle
 language:
+- en
+- zh-Hans
 timezone:
 
 # URL
@@ -68,4 +70,6 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: https://github.com/stillwuyan/stillwuyan.github.io.git
+  branch: master

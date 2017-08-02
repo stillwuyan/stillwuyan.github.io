@@ -16,3 +16,6 @@ Blog主题使用[NexT](https://github.com/iissnan/hexo-theme-next)
  git push edit master:dev
  git pull edit dev:master
  ```
+ 
+## 参考链接
+1. [如何创建分类页面](https://github.com/iissnan/hexo-theme-next/wiki/%E5%88%9B%E5%BB%BA%E5%88%86%E7%B1%BB%E9%A1%B5%E9%9D%A2)

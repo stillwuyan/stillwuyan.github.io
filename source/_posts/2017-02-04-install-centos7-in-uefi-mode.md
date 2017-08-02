@@ -2,6 +2,7 @@
 title: UEFI安装CentOS 7
 date: 2017-02-04 16:35:22
 tags: [UEFI, CentOS]
+categories: Technology
 ---
 目前，大部分主板已经使用UEFI替代了BIOS，由于第一次在UEFI环境下安装CentOS 7，因此遇到很多坑，在网上查找答案的过程中发现很少有人将完整的安装步骤分享出来，因此利用本文记录一下。
 
