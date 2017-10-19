@@ -36,7 +36,6 @@ Blog主题使用[NexT](https://github.com/iissnan/hexo-theme-next)
   hexo deploy
   ```
 
-  ​
 
 ### 3. 保存工作区
 
