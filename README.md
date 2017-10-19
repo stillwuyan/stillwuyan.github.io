@@ -26,7 +26,7 @@ Blog主题使用[NexT](https://github.com/iissnan/hexo-theme-next)
   hexo generate
   ```
 
-  > **说明：**由于部署时也会重新生成静态文件，因此该过程可以省略。
+  > **说明：** 由于部署时也会重新生成静态文件，因此该过程可以省略。
 
 ### 2. 部署
 
