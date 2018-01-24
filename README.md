@@ -33,7 +33,7 @@ Blog主题使用[NexT](https://github.com/iissnan/hexo-theme-next)
 + 将静态文件上传至git库，通过[`https://stillwuyan.github.io/`](https://stillwuyan.github.io/)可以访问页面。
 
   ```
-  hexo deploy
+  hexo deploy -g
   ```
 
 
