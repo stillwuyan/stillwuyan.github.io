@@ -6,22 +6,22 @@ categories: Technology
 ---
 记录FFmpeg常用的命令，留作备忘。
 
-### 1. 将本地文件推流至RTMP Server，并循环播放
+#### 1. 将本地文件推流至RTMP Server，并循环播放
 ```
 ffmpeg -stream_loop -1 -re -i ./file.mp4 -c copy -f flv "rtmp://localhost:1935/live/video live=1 timeout=5"
 ```
 
-### 2. 将音频流转发到其他RTMP Server
+#### 2. 将音频流转发到其他RTMP Server
 ```
 ffmpeg -probesize 1M -analyzeduration 5M "rtmp://localhost:1935/live/audio1 live=1 timeout=5" -c copy -f flv "rtmp://localhost:1935/live/audio2 live=1 timeout=5"
 ```
 
-### 3. 将视频缩放至指定分辨率（640x320），宽高比不一致时填充黑边
+#### 3. 将视频缩放至指定分辨率（640x320），宽高比不一致时填充黑边
 ```
 ffmpeg -i ./file.mp4 -vf "scale=iw*min(640/iw\,360/ih):ih*min(640/iw\,360/ih),pad=640:360:(640-iw)/2:(320-ih)/2" -c:v libx264 -crf 18 -c:a aac -f mp4 ./output.mp4
 ```
 
-### 4. `-vf`和`-filter_complex`的区别：
+#### 4. `-vf`和`-filter_complex`的区别：
    + `-vf`只能构建简单的`filter graph`，它只允许有一个输入和一个输出，即：`ffmpeg`的`-i`参数只能有一个。但是，可以在`-vf`中添加`amovie`或`movie`插件实现多输入，例如：
      ```
      ffmpeg -i ./video.mp4 -vf "movie=./image.jpg,scale=102x58[watermark];[in]scale=872x480[out];[out][watermark]overlay=0:422" -c:v libx264 -c:a aac -f mp4 ./output.mp4 -y 
@@ -60,7 +60,7 @@ ffmpeg -i ./file.mp4 -vf "scale=iw*min(640/iw\,360/ih):ih*min(640/iw\,360/ih),pa
      ffmpeg -i input.mkv -filter_complex "[0:v]setpts=0.5*PTS[v];[0:a]atempo=2.0[a]" -map "[v]" -map "[a]" output.mkv
      ```
 
-### 7. 视频显示大小由分辨率和宽高比决定，ffmpeg提供宽高值，SAR和DAR参数控制视频显示大小。
+#### 7. 视频显示大小由分辨率和宽高比决定，ffmpeg提供宽高值，SAR和DAR参数控制视频显示大小。
    + DAR - Display Aspect Ratio 显示横纵比。最终显示的图像在长度单位上的横纵比。
    + SAR - Sample Aspect Ratio 采样横纵比。表示横向像素点数和纵向像素点数的比值。
    + `DAR = HORIZONTAL_RESOLUTION / VERTICAL_RESOLUTION * SAR`
@@ -72,7 +72,7 @@ ffmpeg -i ./file.mp4 -vf "scale=iw*min(640/iw\,360/ih):ih*min(640/iw\,360/ih),pa
 ffmpeg -i test.mp4 -vf "[0]scale=iw*min(sar\,1)*min(640/iw/min(sar\,1)\,360/ih*max(sar\,1)):ih/max(sar\,1)*min(640/iw/min(sar\,1)\,360/ih*max(sar\,1)),pad=640:360:(640-iw)/2:(360-ih)/2[video0]" -map [video0] -map 0:a? -c:v h264 -b:v 120k -c:a aac -b:a 64k -g 30 -max_muxing_queue_size 512 -y out.mp4
 ```
 
-### 8. 使mp4支持渐进式下载，使用`-movflags faststart`命令将metadata（moov）放在data之前，或者使用`-movflags frag_keyframe`以fragmented（moof）方式组织box
+#### 8. 使mp4支持渐进式下载，使用`-movflags faststart`命令将metadata（moov）放在data之前，或者使用`-movflags frag_keyframe`以fragmented（moof）方式组织box
 
 ```
 file -> file:
@@ -83,7 +83,7 @@ stream -> segments:
 ffmpeg -i rtmp://localhost/live/test -c copy -f segment -segment_time 5 -segment_format_options movflags=frag_keyframe test%d.mp4
 ffmpeg -i rtmp://localhost/live/test -c copy -f segment -segment_time 5 -segment_format_options movflags=frag_keyframe test%d.mp4
 ```
-### 9. 提取视频关键帧
+#### 9. 提取视频关键帧
 
 ```
 ffmpeg -v debug -i video.webm -vf "select=eq(pict_type\,I)" -vsync vfr thumb%04d.jpg -hide_banner 2> log.txt

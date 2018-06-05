@@ -7,17 +7,17 @@ categories: Technology
 
 记录FFprobe常用的命令，留作备忘。
 
-### 1. 查看视频容器的信息，使用`-show_format`：
+#### 1. 查看视频容器的信息，使用`-show_format`：
 ```
 ffprobe -v quiet -hide_banner -show_format test.mp4
 ```
 
-### 2. 查看视频流的信息，使用`-show_streams`：
+#### 2. 查看视频流的信息，使用`-show_streams`：
 ```
 ffproge -v quiet -hide_banner -show_streams test.mp4
 ```
 
-### 3. 如果不使用`-hide_banner`参数，输出内容中将包含程序编译信息：
+#### 3. 如果不使用`-hide_banner`参数，输出内容中将包含程序编译信息：
 ```
 ffprobe version N-86994-g92da230 Copyright (c) 2007-2017 the FFmpeg developers
   built with gcc 7.1.0 (GCC)
@@ -32,7 +32,7 @@ ffprobe version N-86994-g92da230 Copyright (c) 2007-2017 the FFmpeg developers
   libpostproc    54.  6.100 / 54.  6.100
 ```
 
-### 4. 如果不使用`-v quiet`参数，输出内容中将包含调试信息。调试信息的详细程度也可以通过`-v info`/`-v verbose`/`-v debug`等具体参数来调节：
+#### 4. 如果不使用`-v quiet`参数，输出内容中将包含调试信息。调试信息的详细程度也可以通过`-v info`/`-v verbose`/`-v debug`等具体参数来调节：
 ```
 Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'test.mp4':
   Metadata:
@@ -51,7 +51,7 @@ Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'test.mp4':
       handler_name    : Sound Media Handler
 ```
 
-### 5. 使用`-print_format`参数可以设置输出内容的格式化形式，如`json`、`xml`或`csv`等：
+#### 5. 使用`-print_format`参数可以设置输出内容的格式化形式，如`json`、`xml`或`csv`等：
 ```
 ffprobe -v quiet -hide_banner -show_format -pretty -print_format json=compact=0 test.mp4
 {
@@ -76,7 +76,7 @@ ffprobe -v quiet -hide_banner -show_format -pretty -print_format json=compact=0 
 }
 ```
 
-### 6. 使用`-show_frames`参数可以显示各条流的逐帧信息，使用`-select_streams`参数可以选择查看哪条流：
+#### 6. 使用`-show_frames`参数可以显示各条流的逐帧信息，使用`-select_streams`参数可以选择查看哪条流：
 ```
 ffprobe -v quiet -hide_banner -show_frames -select_streams video test.mp4 | more            
 [FRAME]
@@ -118,7 +118,7 @@ pkt_duration=N/A
 --More--
 ```
 
-### 7. 使用`-show_entries`参数可以筛选显示的`entries` 和`sections`。因此如果知道`entries`和`sections`，可以直接使用该参数筛选出想要的信息：
+#### 7. 使用`-show_entries`参数可以筛选显示的`entries` 和`sections`。因此如果知道`entries`和`sections`，可以直接使用该参数筛选出想要的信息：
 ```
 ffprobe -v quiet -hide_banner -select_streams video -show_entries format:frame=media_type,pict_type test.mp4 | more
 [FRAME]
