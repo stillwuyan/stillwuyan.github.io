@@ -73,6 +73,7 @@ ffmpeg -i test.mp4 -vf "[0]scale=iw*min(sar\,1)*min(640/iw/min(sar\,1)\,360/ih*m
 ```
 
 ### 8. 使mp4支持渐进式下载，使用`-movflags faststart`命令将metadata（moov）放在data之前，或者使用`-movflags frag_keyframe`以fragmented（moof）方式组织box
+
 ```
 file -> file:
 ffmpeg -i test.mp4 -c copy -movflags faststart test_progress.mp4
@@ -82,3 +83,11 @@ stream -> segments:
 ffmpeg -i rtmp://localhost/live/test -c copy -f segment -segment_time 5 -segment_format_options movflags=frag_keyframe test%d.mp4
 ffmpeg -i rtmp://localhost/live/test -c copy -f segment -segment_time 5 -segment_format_options movflags=frag_keyframe test%d.mp4
 ```
+### 9. 提取视频关键帧
+
+```
+ffmpeg -v debug -i video.webm -vf "select=eq(pict_type\,I)" -vsync vfr thumb%04d.jpg -hide_banner 2> log.txt
+```
+
++ -vsync vfr: This is a parameter that tells the filter to use a variable bitrate video synchronization. If we do not use this parameter ffmpeg will fail to find only the keyframes and shoud extract other frames that can be not processed correctly.
++ -v debug: You can use the detail log to find the time stamp of the key frame.
