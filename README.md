@@ -20,7 +20,7 @@
 + 从github下载Blog工作目录后，需要安装Hexo CLI和相关依赖
 
   ```
-  git clone https://github.com/stillwuyan/stillwuyan.github.io.git blog
+  git clone -o edit -b dev https://github.com/stillwuyan/stillwuyan.github.io.git blog
   cd blog
   git checkout -b edit origin/dev
   npm install hexo-cli -g
@@ -78,9 +78,9 @@
 
 + 远程编辑库使用方式（src：dst）
  ```
- git remote add -t dev edit https://github.com/stillwuyan/stillwuyan.github.io.git
- git push edit master:dev
- git pull edit dev:master
+ git remote add -t dev -m dev edit https://github.com/stillwuyan/stillwuyan.github.io.git
+ git push edit dev:dev
+ git pull edit dev:dev
  ```
 
 
