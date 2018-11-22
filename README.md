@@ -78,7 +78,7 @@
 
 + 远程编辑库使用方式（src：dst）
  ```
- git remote add -t dev -m dev edit https://github.com/stillwuyan/stillwuyan.github.io.git
+ git remote add -t dev edit https://github.com/stillwuyan/stillwuyan.github.io.git
  git push edit dev:dev
  git pull edit dev:dev
  ```
