@@ -40,6 +40,13 @@
 
   > 注意需要修改`_config.yml`的`theme`值为`maupassant`
 
++ 留用原来的主题，需要下载主题submodule的代码
+
+  ```
+  git submodule init
+  git submodule update
+  ```
+
 ## 工作区说明
 
 ### 编辑
